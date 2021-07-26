@@ -19,7 +19,7 @@ class ViewController: UIViewController {
 //        self.navigationController?.navigationBar.backgroundColor = UIColor.green
         
         myCalendar.dateFormat = "d"
-        
+        //
         self.navigationController?.navigationBar.barTintColor = UIColor.init(displayP3Red: 99/255, green: 197/255, blue: 148/255, alpha: 1)
         
         self.navigationController?.navigationBar.titleTextAttributes = [.foregroundColor: UIColor.white]
