@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Z1B-5m-4wl">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="18122" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Z1B-5m-4wl">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="18093"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -71,7 +71,8 @@
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="hSZ-se-r8e">
                             <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <connections>
-                                <segue destination="R73-Hs-GvB" kind="show" id="a8a-QZ-l7M"/>
+                                <action selector="moveToAddAction:" destination="Tks-sT-ruL" id="BcA-uk-tex"/>
+                                <segue destination="R73-Hs-GvB" kind="show" identifier="addSegue" id="a8a-QZ-l7M"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -125,6 +126,9 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="등록하기" id="NiJ-KL-icH"/>
+                    <connections>
+                        <outlet property="selectDate" destination="ygV-A3-Uhq" id="cPa-ua-BDx"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="3cQ-fX-Bb3" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
