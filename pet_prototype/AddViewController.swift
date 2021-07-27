@@ -9,12 +9,28 @@ import UIKit
 
 class AddViewController: UIViewController {
 
+    @IBOutlet weak var selectDate: UILabel!
+    
+    var hereDate: Date?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
         self.navigationController?.navigationBar.tintColor = UIColor.white
+        
+        
+        let dateFormatter = DateFormatter()
+        
+        dateFormatter.dateFormat = "yyyy-MM-dd"
+        
+        let dataString = dateFormatter.string(from: hereDate!)
+        
+        
+        selectDate.text = dataString
     }
+
+   
     
 
     /*
