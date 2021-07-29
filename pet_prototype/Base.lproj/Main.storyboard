@@ -155,6 +155,8 @@
                     <navigationItem key="navigationItem" title="등록하기" id="NiJ-KL-icH"/>
                     <connections>
                         <outlet property="selectDate" destination="ygV-A3-Uhq" id="cPa-ua-BDx"/>
+                        <outlet property="tfContext" destination="nSF-i9-nvO" id="N3H-I5-KTy"/>
+                        <outlet property="tfTitle" destination="S98-ca-TTK" id="Aqj-Hh-MFy"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="3cQ-fX-Bb3" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

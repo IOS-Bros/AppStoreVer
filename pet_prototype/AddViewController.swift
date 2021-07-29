@@ -11,10 +11,11 @@ class AddViewController: UIViewController {
 
     @IBOutlet weak var selectDate: UILabel!
     @IBOutlet weak var tfTitle: UITextField!
-    @IBOutlet weak var tfContent: UITextField!
+
+    @IBOutlet weak var tfContext: UITextField!
+
     
-    var hereDate: Date?
-    
+        
     var receiveDate: String = ""
     
     override func viewDidLoad() {
@@ -45,7 +46,21 @@ class AddViewController: UIViewController {
         dateFormatter.dateFormat = "yyyy-MM-dd"
         let dataString = dateFormatter.string(from: date)
         
-        return dataString
+
+        self.navigationController?.popViewController(animated: true)
+        
+        let sqlite = SQLite()
+        
+        let result = sqlite.createTable()
+        
+        print(result)
+        
+        
+        let insertResult = sqlite.insert("hello", "hello", "hello", "hello")
+        
+        print(insertResult)
+        
+
     }
     
     
