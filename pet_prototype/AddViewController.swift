@@ -15,16 +15,27 @@ class AddViewController: UIViewController {
     
     var hereDate: Date?
     
+    var receiveDate: String = ""
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
+      
+      receiveDay(receiveDate)
+                
+        selectDate.text = receiveDate
+        
         // Do any additional setup after loading the view.
         self.navigationController?.navigationBar.tintColor = UIColor.white
-        
-        selectDate.text = formatter(hereDate!)
+    
+    }
+    
+    
+    func receiveDay(_ date: String){
+        receiveDate = date
     }
 
     @IBAction func btnSubmit(_ sender: UIButton) {
+        self.navigationController?.popViewController(animated: true)
         let current_date_string = formatter(Date())
 //        print(current_date_string)
     }
@@ -38,7 +49,6 @@ class AddViewController: UIViewController {
     }
     
     
-
     /*
     // MARK: - Navigation
 
