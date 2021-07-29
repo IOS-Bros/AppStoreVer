@@ -11,11 +11,12 @@ class AddViewController: UIViewController {
 
     @IBOutlet weak var selectDate: UILabel!
     @IBOutlet weak var tfTitle: UITextField!
-
     @IBOutlet weak var tfContext: UITextField!
 
     
-        
+    var realTitle: String!
+    var realContext: String!
+
     var receiveDate: String = ""
     
     override func viewDidLoad() {
@@ -28,6 +29,8 @@ class AddViewController: UIViewController {
         // Do any additional setup after loading the view.
         self.navigationController?.navigationBar.tintColor = UIColor.white
     
+        
+        
     }
     
     
@@ -39,6 +42,19 @@ class AddViewController: UIViewController {
         self.navigationController?.popViewController(animated: true)
         let current_date_string = formatter(Date())
 //        print(current_date_string)
+        
+        let sqlite = SQLite()
+        
+        sqlite.createTable()
+        
+        
+        realTitle = tfTitle.text!
+        realContext = tfContext.text!
+        
+        
+        let insertResult = sqlite.insert(realTitle,realContext, receiveDate, current_date_string)
+        
+        print(insertResult)
     }
     
     func formatter(_ date: Date) -> String {
@@ -49,18 +65,8 @@ class AddViewController: UIViewController {
 
         self.navigationController?.popViewController(animated: true)
         
-        let sqlite = SQLite()
         
-        let result = sqlite.createTable()
-        
-        print(result)
-        
-        
-        let insertResult = sqlite.insert("hello", "hello", "hello", "hello")
-        
-        print(insertResult)
-        
-
+        return dataString
     }
     
     
