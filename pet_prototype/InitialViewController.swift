@@ -13,6 +13,8 @@ class InitialViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        view.backgroundColor = UIColor.init(displayP3Red: 99/255, green: 197/255, blue: 148/255, alpha: 1)
+        
         let time = DispatchTime.now() + .seconds(2)
         ivLogo.alpha = 0
         

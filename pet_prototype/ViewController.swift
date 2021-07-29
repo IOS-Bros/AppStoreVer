@@ -15,7 +15,7 @@ class ViewController: UIViewController{
     
     @IBOutlet weak var calendar: FSCalendar!
     
-    @IBOutlet weak var lblSchedule: UILabel!
+    
     
     
     var selectDateType = formatter.date(from: selectDate01)
@@ -118,7 +118,7 @@ extension ViewController: FSCalendarDelegate,FSCalendarDataSource{
             print(formatter.string(from: date) + " 선택됨")
             selectDate01 = formatter.string(from: date)
             selectDateType = formatter.date(from: selectDate01)
-            lblSchedule.text = selectDate01
+            
         }
         
         func calendar(_ calendar: FSCalendar, numberOfEventsFor date: Date) -> Int {
