@@ -4,6 +4,7 @@
 //
 //  Created by SeungYeon on 2021/07/29.
 //
+
 import Foundation
 import SQLite3
 class SQLite{
@@ -131,5 +132,6 @@ class SQLite{
             let submitDate = String(cString: sqlite3_column_text(stmt, 4))
             print("read value no : \(no) title : \(title) contents : \(contents) targetDate : \(targetDate) submitDate : \(submitDate) ")
         }
+
     }
 }
