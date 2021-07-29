@@ -6,6 +6,6 @@ target 'pet_prototype' do
   use_frameworks!
 
   # Pods for pet_prototype
-  pod ‘CalendarLib’
+  pod ‘FSCalendar’
 
 end
