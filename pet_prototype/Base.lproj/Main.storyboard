@@ -131,7 +131,7 @@
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
                                 <connections>
-                                    <action selector="btnInsert:" destination="R73-Hs-GvB" eventType="touchUpInside" id="bxw-aA-ZvL"/>
+                                    <action selector="btnSubmit:" destination="R73-Hs-GvB" eventType="touchUpInside" id="1VL-iK-j3g"/>
                                 </connections>
                             </button>
                         </subviews>
