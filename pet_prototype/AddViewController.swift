@@ -10,9 +10,10 @@ import UIKit
 class AddViewController: UIViewController {
 
     @IBOutlet weak var selectDate: UILabel!
+    @IBOutlet weak var tfTitle: UITextField!
+    @IBOutlet weak var tfContext: UITextField!
     
-    var hereDate: Date?
-    
+        
     var receiveDate: String = ""
     
     override func viewDidLoad() {
@@ -39,6 +40,18 @@ class AddViewController: UIViewController {
     @IBAction func btnInsert(_ sender: UIButton) {
         
         self.navigationController?.popViewController(animated: true)
+        
+        let sqlite = SQLite()
+        
+        let result = sqlite.createTable()
+        
+        print(result)
+        
+        
+        let insertResult = sqlite.insert("hello", "hello", "hello", "hello")
+        
+        print(insertResult)
+        
     }
     
     /*
