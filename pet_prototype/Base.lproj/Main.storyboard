@@ -119,6 +119,7 @@
                             </label>
                             <textField opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="251" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="제목을 입력해주세요" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="S98-ca-TTK">
                                 <rect key="frame" x="30" y="172" width="354" height="40"/>
+
                                 <constraints>
                                     <constraint firstAttribute="height" constant="40" id="h9Y-dI-NPI"/>
                                 </constraints>
