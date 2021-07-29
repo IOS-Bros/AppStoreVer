@@ -10,6 +10,8 @@ import UIKit
 class AddViewController: UIViewController {
 
     @IBOutlet weak var selectDate: UILabel!
+    @IBOutlet weak var tfTitle: UITextField!
+    @IBOutlet weak var tfContent: UITextField!
     
     var hereDate: Date?
     
@@ -17,15 +19,13 @@ class AddViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        
-        receiveDay(receiveDate)
+      
+      receiveDay(receiveDate)
                 
         selectDate.text = receiveDate
         
         // Do any additional setup after loading the view.
         self.navigationController?.navigationBar.tintColor = UIColor.white
-        
     
     }
     
@@ -34,12 +34,20 @@ class AddViewController: UIViewController {
         receiveDate = date
     }
 
-   
-    
-    @IBAction func btnInsert(_ sender: UIButton) {
-        
+    @IBAction func btnSubmit(_ sender: UIButton) {
         self.navigationController?.popViewController(animated: true)
+        let current_date_string = formatter(Date())
+//        print(current_date_string)
     }
+    
+    func formatter(_ date: Date) -> String {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy-MM-dd"
+        let dataString = dateFormatter.string(from: date)
+        
+        return dataString
+    }
+    
     
     /*
     // MARK: - Navigation
