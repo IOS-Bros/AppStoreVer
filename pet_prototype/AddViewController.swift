@@ -11,8 +11,9 @@ class AddViewController: UIViewController {
 
     @IBOutlet weak var selectDate: UILabel!
     @IBOutlet weak var tfTitle: UITextField!
-    @IBOutlet weak var tfContext: UITextField!
-
+//    @IBOutlet weak var tfContext: UITextField!
+    @IBOutlet weak var tfContext: UITextView!
+    
     
     var realTitle: String!
     var realContext: String!
