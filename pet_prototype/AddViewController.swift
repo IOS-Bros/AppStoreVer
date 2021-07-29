@@ -22,15 +22,13 @@ class AddViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
       
-      receiveDay(receiveDate)
+        receiveDay(receiveDate)
                 
         selectDate.text = receiveDate
         
         // Do any additional setup after loading the view.
         self.navigationController?.navigationBar.tintColor = UIColor.white
-    
-        
-        
+
     }
     
     
@@ -45,12 +43,12 @@ class AddViewController: UIViewController {
         
         let sqlite = SQLite()
         
-        sqlite.createTable()
-        
-        
         realTitle = tfTitle.text!
         realContext = tfContext.text!
         
+        let viewController = ViewController()
+        
+        events.append(viewController.selectDateType!)
         
         let insertResult = sqlite.insert(realTitle,realContext, receiveDate, current_date_string)
         

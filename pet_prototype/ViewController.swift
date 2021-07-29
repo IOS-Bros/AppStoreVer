@@ -26,10 +26,14 @@ class ViewController: UIViewController{
         self.navigationController?.navigationBar.barTintColor = UIColor.init(displayP3Red: 99/255, green: 197/255, blue: 148/255, alpha: 1)
         self.navigationController?.navigationBar.titleTextAttributes = [.foregroundColor: UIColor.white]
         
+        //현재 날짜
+        let currentDate = Date()
         
         formatter.locale = Locale(identifier: "ko_KR")
         formatter.dateFormat = "yyyy-MM-dd"
-        
+    
+        selectDate01 = formatter.string(from: currentDate)
+
         
         calendarTextcolor()
         encodingMonth()
@@ -70,9 +74,12 @@ class ViewController: UIViewController{
         if segue.identifier == "addSegue" {
             let detail = segue.destination as! AddViewController
             detail.receiveDay(selectDate01)
-            events.append(selectDateType!)
-                    
-                print(events[0])
+            
+            
+            
+//            events.append(selectDateType!)
+            
+//            print(events[0])
         }
     }
         
@@ -123,8 +130,10 @@ extension ViewController: FSCalendarDelegate,FSCalendarDataSource{
         
         func calendar(_ calendar: FSCalendar, numberOfEventsFor date: Date) -> Int {
             if events.contains(date) {
+                
                 return 1
             } else {
+                
                 return 0
             }
         }

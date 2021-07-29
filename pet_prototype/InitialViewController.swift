@@ -13,6 +13,11 @@ class InitialViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        let sqlite = SQLite()
+        
+        sqlite.createTable()
+        
         let time = DispatchTime.now() + .seconds(2)
         ivLogo.alpha = 0
         
