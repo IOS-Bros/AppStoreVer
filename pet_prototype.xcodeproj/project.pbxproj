@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -15,6 +15,7 @@
 		041E077626AC074400636875 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 041E077426AC074400636875 /* LaunchScreen.storyboard */; };
 		0438935D26AC679C00D30B72 /* AddViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0438935C26AC679C00D30B72 /* AddViewController.swift */; };
 		76FB517FE44E89429A0A33F8 /* Pods_pet_prototype.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5BFD7EAD66244AC038FC0E5C /* Pods_pet_prototype.framework */; };
+		80A556F326B18CF3005CB52D /* InitialViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80A556F226B18CF3005CB52D /* InitialViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -30,6 +31,7 @@
 		2A4C91BC88213F8D67711E37 /* Pods-pet_prototype.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-pet_prototype.debug.xcconfig"; path = "Target Support Files/Pods-pet_prototype/Pods-pet_prototype.debug.xcconfig"; sourceTree = "<group>"; };
 		37A2F49CF93A922711AF9129 /* Pods-pet_prototype.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-pet_prototype.release.xcconfig"; path = "Target Support Files/Pods-pet_prototype/Pods-pet_prototype.release.xcconfig"; sourceTree = "<group>"; };
 		5BFD7EAD66244AC038FC0E5C /* Pods_pet_prototype.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_pet_prototype.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		80A556F226B18CF3005CB52D /* InitialViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InitialViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -73,6 +75,7 @@
 				041E077426AC074400636875 /* LaunchScreen.storyboard */,
 				041E077726AC074400636875 /* Info.plist */,
 				0438935C26AC679C00D30B72 /* AddViewController.swift */,
+				80A556F226B18CF3005CB52D /* InitialViewController.swift */,
 			);
 			path = pet_prototype;
 			sourceTree = "<group>";
@@ -91,7 +94,6 @@
 				2A4C91BC88213F8D67711E37 /* Pods-pet_prototype.debug.xcconfig */,
 				37A2F49CF93A922711AF9129 /* Pods-pet_prototype.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -209,6 +211,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				80A556F326B18CF3005CB52D /* InitialViewController.swift in Sources */,
 				041E076E26AC074200636875 /* ViewController.swift in Sources */,
 				041E076A26AC074200636875 /* AppDelegate.swift in Sources */,
 				0438935D26AC679C00D30B72 /* AddViewController.swift in Sources */,
