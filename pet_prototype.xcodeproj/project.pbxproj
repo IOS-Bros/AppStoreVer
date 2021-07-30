@@ -17,10 +17,9 @@
 		1FAFF31A26B2752C00FA3C64 /* SQLite.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FAFF31926B2752C00FA3C64 /* SQLite.swift */; };
 		377B68B426B382A400647AF3 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 377B68B326B382A400647AF3 /* DetailViewController.swift */; };
 		37AF0D2926B3C80C002B0E60 /* Extention.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37AF0D2826B3C80C002B0E60 /* Extention.swift */; };
+		8061E7F626B4086A000BEFE5 /* DateHandling.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8061E7F526B4086A000BEFE5 /* DateHandling.swift */; };
 		80A556F326B18CF3005CB52D /* InitialViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80A556F226B18CF3005CB52D /* InitialViewController.swift */; };
-		80FE287326B3CEA400D8D1B7 /* DateHandling.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80FE287226B3CEA400D8D1B7 /* DateHandling.swift */; };
 		80FE287526B3CEBB00D8D1B7 /* ToDoModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80FE287426B3CEBB00D8D1B7 /* ToDoModel.swift */; };
-		80FE287A26B3F80000D8D1B7 /* DateHandling.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80FE287926B3F80000D8D1B7 /* DateHandling.swift */; };
 		8CF7B7D43351DE3793AE0231 /* Pods_pet_prototype.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1BF1E078C969BF308C71241D /* Pods_pet_prototype.framework */; };
 /* End PBXBuildFile section */
 
@@ -39,10 +38,9 @@
 		377B68B326B382A400647AF3 /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 		37AF0D2826B3C80C002B0E60 /* Extention.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extention.swift; sourceTree = "<group>"; };
 		798D6F31BC5C7FC885F5BEEF /* Pods-pet_prototype.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-pet_prototype.release.xcconfig"; path = "Target Support Files/Pods-pet_prototype/Pods-pet_prototype.release.xcconfig"; sourceTree = "<group>"; };
+		8061E7F526B4086A000BEFE5 /* DateHandling.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DateHandling.swift; sourceTree = "<group>"; };
 		80A556F226B18CF3005CB52D /* InitialViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InitialViewController.swift; sourceTree = "<group>"; };
-		80FE287226B3CEA400D8D1B7 /* DateHandling.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DateHandling.swift; sourceTree = "<group>"; };
 		80FE287426B3CEBB00D8D1B7 /* ToDoModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ToDoModel.swift; sourceTree = "<group>"; };
-		80FE287926B3F80000D8D1B7 /* DateHandling.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DateHandling.swift; sourceTree = "<group>"; };
 		F85F8DC4C52CD55EBC8487BC /* Pods-pet_prototype.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-pet_prototype.debug.xcconfig"; path = "Target Support Files/Pods-pet_prototype/Pods-pet_prototype.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -68,7 +66,6 @@
 				041E076726AC074200636875 /* Products */,
 				FBDA999A28514685B7B45B93 /* Pods */,
 				6ECC612E96259828F4CB4259 /* Frameworks */,
-				80FE287626B3F7DA00D8D1B7 /* Recovered References */,
 			);
 			sourceTree = "<group>";
 		};
@@ -122,18 +119,10 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		80FE287626B3F7DA00D8D1B7 /* Recovered References */ = {
-			isa = PBXGroup;
-			children = (
-				80FE287226B3CEA400D8D1B7 /* DateHandling.swift */,
-			);
-			name = "Recovered References";
-			sourceTree = "<group>";
-		};
 		80FE287826B3F80000D8D1B7 /* Utility */ = {
 			isa = PBXGroup;
 			children = (
-				80FE287926B3F80000D8D1B7 /* DateHandling.swift */,
+				8061E7F526B4086A000BEFE5 /* DateHandling.swift */,
 			);
 			path = Utility;
 			sourceTree = "<group>";
@@ -261,17 +250,16 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				80FE287326B3CEA400D8D1B7 /* DateHandling.swift in Sources */,
 				37AF0D2926B3C80C002B0E60 /* Extention.swift in Sources */,
 				80A556F326B18CF3005CB52D /* InitialViewController.swift in Sources */,
 				1FAFF31A26B2752C00FA3C64 /* SQLite.swift in Sources */,
 				041E076E26AC074200636875 /* ViewController.swift in Sources */,
+				8061E7F626B4086A000BEFE5 /* DateHandling.swift in Sources */,
 				041E076A26AC074200636875 /* AppDelegate.swift in Sources */,
 				0438935D26AC679C00D30B72 /* AddViewController.swift in Sources */,
 				041E076C26AC074200636875 /* SceneDelegate.swift in Sources */,
 				377B68B426B382A400647AF3 /* DetailViewController.swift in Sources */,
 				80FE287526B3CEBB00D8D1B7 /* ToDoModel.swift in Sources */,
-				80FE287A26B3F80000D8D1B7 /* DateHandling.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
