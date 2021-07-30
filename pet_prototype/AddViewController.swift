@@ -9,7 +9,6 @@ import UIKit
 
 class AddViewController: UIViewController {
     
-    @IBOutlet weak var selectDate: UILabel!
     @IBOutlet weak var tfTitle: UITextField!
     @IBOutlet weak var tfContext: UITextView!
     @IBOutlet weak var datePicker: UIDatePicker!
@@ -23,11 +22,11 @@ class AddViewController: UIViewController {
         super.viewDidLoad()
         
         receiveDay(receiveDate)
-//        selectDate.text = receiveDate
         datePicker.setDate(changeDate, animated: true)
         // Do any additional setup after loading the view.
         self.navigationController?.navigationBar.tintColor = UIColor.white
         tfContext.placeholder = "내용을 입력해주세요!"
+        
     }
     
     func receiveDay(_ date: String){
@@ -40,33 +39,9 @@ class AddViewController: UIViewController {
     }
     @IBAction func changeDatePicker(_ sender: UIDatePicker) {
         let datePickerView = sender
-//        let formatter = DateFormatter()
-//        formatter.locale = Locale(identifier: "ko")
-//        formatter.dateFormat = "yyyy-MM-dd" //24시간 HH, 12시간 hh
-//        receiveDate = formatter.string(from: datePickerView.date)
         receiveDate = stringFormatter(datePickerView.date)
     }
     
-    @IBAction func btnSubmit(_ sender: UIButton) {
-        
-        let current_date_string = stringFormatter(Date())
-        let sqlite = SQLite()
-        
-        guard tfTitle.text?.isEmpty != true else {alter(message: "제목을 입력해주세요!", value: false); return}
-        
-        realTitle = tfTitle.text!
-        realContext = tfContext.text!
-        
-        let viewController = ViewController()
-        events.append(viewController.selectDateType!)
-        
-        let insertResult = sqlite.insert(realTitle, realContext, receiveDate, current_date_string)
-        if insertResult{
-            alter(message: "+1 능력 상승 되었습니다.", value: true)
-        }else{
-            alter(message: "등록 실패 했습니다.", value: true)
-        }
-    }
     @IBAction func barBtnSubmit(_ sender: UIBarButtonItem) {
         let current_date_string = stringFormatter(Date())
         let sqlite = SQLite()
@@ -86,25 +61,6 @@ class AddViewController: UIViewController {
             alter(message: "등록 실패 했습니다.", value: true)
         }
     }
-    
-    func stringFormatter(_ date: Date) -> String {
-        let dateFormatter = DateFormatter()
-        formatter.locale = Locale(identifier: "ko")
-        dateFormatter.dateFormat = "yyyy-MM-dd"
-        let dataString = dateFormatter.string(from: date)
-        
-        return dataString
-    }
-    
-//    func textViewSetupView() {
-//        if tfContext.text == "내용을 입력해주세요!"{
-//            tfContext.text = ""
-//            tfContext.textColor = UIColor.black
-//        }else if tfContext.text == ""{
-//            tfContext.text = "내용을 입력해주세요!"
-//            tfContext.textColor = UIColor.lightGray
-//        }
-//    }
     
     /*
      // MARK: - Navigation
@@ -130,14 +86,12 @@ extension UIViewController{
         resultAlert.addAction(okAction)
         present(resultAlert, animated: true, completion: nil)
     }
+    func stringFormatter(_ date: Date) -> String {
+        let dateFormatter = DateFormatter()
+        formatter.locale = Locale(identifier: "ko")
+        dateFormatter.dateFormat = "yyyy-MM-dd"
+        let dataString = dateFormatter.string(from: date)
+        
+        return dataString
+    }
 }
-//
-//extension ViewController: UITextViewDelegate{
-//    func textViewDidBeginEditing(_ textView: UITextView) {
-//        self.textViewSetupView()
-//    }
-//    func textViewDidEndEditing(_ textView: UITextView) {
-//        <#code#>
-//    }
-//
-//}

@@ -9,25 +9,28 @@ import UIKit
 
 class DetailViewController: UIViewController {
 
-    @IBOutlet weak var lblTargetDate: UILabel!
     @IBOutlet weak var tfTitle: UITextField!
     @IBOutlet weak var tvContent: UITextView!
+    @IBOutlet weak var detailDatePicker: UIDatePicker!
     
     var receiveNo:String!
     var receiveTitle:String!
     var receiveContent:String!
     var receiveTargetDate:String!
     
+    var changeDate : Date!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         receiveData(receiveNo, receiveTitle, receiveContent, receiveTargetDate)
         
-        lblTargetDate.text = receiveTargetDate
         tfTitle.text = receiveTitle
         tvContent.text = receiveContent
-
+        tvContent.placeholder = "내용을 입력해주세요!"
         // Do any additional setup after loading the view.
+        
+        detailDatePicker.setDate(changeDate, animated: true)
     }
     
     func receiveData(_ no: String, _ title:String, _ content:String, _ targetDate:String){
@@ -35,16 +38,27 @@ class DetailViewController: UIViewController {
         receiveTitle = title
         receiveContent = content
         receiveTargetDate = targetDate
+        
+        // 날짜로 변경
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy-MM-dd"
+        dateFormatter.timeZone = TimeZone.autoupdatingCurrent
+        changeDate = dateFormatter.date(from: receiveTargetDate)!
     }
     
-    @IBAction func btnModify(_ sender: UIButton) {
+    @IBAction func changeDatePicker(_ sender: UIDatePicker) {
+        let datePickerView = sender
+        receiveTargetDate = stringFormatter(datePickerView.date)
+    }
+    
+    
+    @IBAction func barBtnModify(_ sender: UIBarButtonItem) {
         let sqlite = SQLite()
         
         guard tfTitle.text?.isEmpty != true else {alter(message: "제목을 입력해주세요!", value: false); return}
         
         receiveTitle = tfTitle.text!
         receiveContent = tvContent.text!
-        receiveTargetDate = lblTargetDate.text!
         
         let viewController = ViewController()
         events.append(viewController.selectDateType!)
@@ -56,7 +70,6 @@ class DetailViewController: UIViewController {
             alter(message: "수정 실패 했습니다.", value: true)
         }
     }
-    
     /*
     // MARK: - Navigation
 

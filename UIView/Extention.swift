@@ -98,7 +98,7 @@ extension UITextView: UITextViewDelegate {
         placeholderLabel.sizeToFit()
         
         placeholderLabel.font = self.font
-        placeholderLabel.textColor = UIColor.lightGray
+        placeholderLabel.textColor = UIColor.systemGray5
         placeholderLabel.tag = 100
         
         placeholderLabel.isHidden = !self.text.isEmpty
