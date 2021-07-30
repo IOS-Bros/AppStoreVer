@@ -68,13 +68,13 @@ class SQLite{
         }
         return true
     }
-    func update(_ no:String, _ title : String,_ contents : String, _ targetDate : String) -> Bool{
+    func update(_ no:Int, _ title : String,_ contents : String, _ targetDate : String) -> Bool{
         databaseOpen()
-        let strNo = title.trimmingCharacters(in: .whitespacesAndNewlines)
+        
         let strTitle = title.trimmingCharacters(in: .whitespacesAndNewlines)
         let strContents = contents.trimmingCharacters(in: .whitespacesAndNewlines)
         let strTargetDate = targetDate.trimmingCharacters(in: .whitespacesAndNewlines)
-        let UPDATE_QUERY = "UPDATE \(TABLE_NAME) Set title = ?, contents = ?, targetDate= ? WHERE no = \(strNo)"
+        let UPDATE_QUERY = "UPDATE \(TABLE_NAME) Set title = ?, contents = ?, targetDate= ? WHERE no = \(no)"
         var stmt:OpaquePointer?
         print(UPDATE_QUERY)
         if sqlite3_prepare(db, UPDATE_QUERY, -1, &stmt, nil) != SQLITE_OK{
