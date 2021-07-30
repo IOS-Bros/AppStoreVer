@@ -17,6 +17,8 @@
 		1FAFF31A26B2752C00FA3C64 /* SQLite.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FAFF31926B2752C00FA3C64 /* SQLite.swift */; };
 		2E8BA6581B1851B35038D76D /* Pods_pet_prototype.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9B5309B3006264842F9A584B /* Pods_pet_prototype.framework */; };
 		377B68B426B382A400647AF3 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 377B68B326B382A400647AF3 /* DetailViewController.swift */; };
+		37AF0D2926B3C80C002B0E60 /* Extention.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37AF0D2826B3C80C002B0E60 /* Extention.swift */; };
+		466F70E15B2831BBB096F235 /* Pods_pet_prototype.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 85DEA25436ED1C2660931E03 /* Pods_pet_prototype.framework */; };
 		80A556F326B18CF3005CB52D /* InitialViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80A556F226B18CF3005CB52D /* InitialViewController.swift */; };
 		80FE287326B3CEA400D8D1B7 /* DateHandling.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80FE287226B3CEA400D8D1B7 /* DateHandling.swift */; };
 		80FE287526B3CEBB00D8D1B7 /* ToDoModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80FE287426B3CEBB00D8D1B7 /* ToDoModel.swift */; };
@@ -35,6 +37,8 @@
 		1FAFF31926B2752C00FA3C64 /* SQLite.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SQLite.swift; sourceTree = "<group>"; };
 		377B68B326B382A400647AF3 /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 		4488E1C7C0E258214B5972AB /* Pods-pet_prototype.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-pet_prototype.debug.xcconfig"; path = "Target Support Files/Pods-pet_prototype/Pods-pet_prototype.debug.xcconfig"; sourceTree = "<group>"; };
+		37AF0D2826B3C80C002B0E60 /* Extention.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extention.swift; sourceTree = "<group>"; };
+		66B4F84574772CE7090A42F0 /* Pods-pet_prototype.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-pet_prototype.debug.xcconfig"; path = "Target Support Files/Pods-pet_prototype/Pods-pet_prototype.debug.xcconfig"; sourceTree = "<group>"; };
 		80A556F226B18CF3005CB52D /* InitialViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InitialViewController.swift; sourceTree = "<group>"; };
 		80FE287226B3CEA400D8D1B7 /* DateHandling.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DateHandling.swift; sourceTree = "<group>"; };
 		80FE287426B3CEBB00D8D1B7 /* ToDoModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ToDoModel.swift; sourceTree = "<group>"; };
@@ -58,6 +62,7 @@
 			isa = PBXGroup;
 			children = (
 				80FE287126B3CE8600D8D1B7 /* Utility */,
+				37AF0D2726B3C7DE002B0E60 /* UIView */,
 				1FAFF31826B273DF00FA3C64 /* SQLite */,
 				041E076826AC074200636875 /* pet_prototype */,
 				041E076726AC074200636875 /* Products */,
@@ -82,11 +87,11 @@
 				041E076D26AC074200636875 /* ViewController.swift */,
 				80A556F226B18CF3005CB52D /* InitialViewController.swift */,
 				0438935C26AC679C00D30B72 /* AddViewController.swift */,
+				377B68B326B382A400647AF3 /* DetailViewController.swift */,
 				041E076F26AC074200636875 /* Main.storyboard */,
 				041E077226AC074400636875 /* Assets.xcassets */,
 				041E077426AC074400636875 /* LaunchScreen.storyboard */,
 				041E077726AC074400636875 /* Info.plist */,
-				377B68B326B382A400647AF3 /* DetailViewController.swift */,
 			);
 			path = pet_prototype;
 			sourceTree = "<group>";
@@ -101,6 +106,15 @@
 			sourceTree = "<group>";
 		};
 		80FE287126B3CE8600D8D1B7 /* Utility */ = {
+		37AF0D2726B3C7DE002B0E60 /* UIView */ = {
+			isa = PBXGroup;
+			children = (
+				37AF0D2826B3C80C002B0E60 /* Extention.swift */,
+			);
+			path = UIView;
+			sourceTree = "<group>";
+		};
+		F2BA15750CE8E6BA709C04FA /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
 				80FE287226B3CEA400D8D1B7 /* DateHandling.swift */,
@@ -240,6 +254,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				80FE287326B3CEA400D8D1B7 /* DateHandling.swift in Sources */,
+				37AF0D2926B3C80C002B0E60 /* Extention.swift in Sources */,
 				80A556F326B18CF3005CB52D /* InitialViewController.swift in Sources */,
 				1FAFF31A26B2752C00FA3C64 /* SQLite.swift in Sources */,
 				041E076E26AC074200636875 /* ViewController.swift in Sources */,
