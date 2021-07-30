@@ -15,9 +15,6 @@ class ViewController: UIViewController{
     
     @IBOutlet weak var calendar: FSCalendar!
     
-    
-    
-    
     var selectDateType = formatter.date(from: selectDate01)
     
     override func viewDidLoad() {
@@ -33,6 +30,15 @@ class ViewController: UIViewController{
         formatter.dateFormat = "yyyy-MM-dd"
     
         selectDate01 = formatter.string(from: currentDate)
+        
+        
+        // "" 부분만 DB에서 추출후 적어주면 됌.
+        var day1 = events.append(formatter.date(from: "2021-07-30")!)
+        var day2 = events.append(formatter.date(from: "2021-08-14")!)
+        var day3 = events.append(formatter.date(from: "2021-08-07")!)
+        var day4 = events.append(formatter.date(from: "2021-06-28")!)
+        var day5 = events.append(formatter.date(from: "2021-07-16")!)
+        
 
         
         calendarTextcolor()
@@ -58,12 +64,12 @@ class ViewController: UIViewController{
     //        events.append(selectDateType!)
             print("Reload")
             if events.contains(selectDateType!){
-                print(events[0])
+                print(events[events.count - 1])
             }else{
                 print("No Data")
             }
-            calendar.delegate = self
-            calendar.dataSource = self
+//            calendar.delegate = self
+//            calendar.dataSource = self
     //        calendar.setCurrentPage(selectDateType! + 2592000, animated: true)
             calendar.reloadData()
             
