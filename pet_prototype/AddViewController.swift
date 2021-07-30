@@ -9,31 +9,41 @@ import UIKit
 
 class AddViewController: UIViewController {
     
-    @IBOutlet weak var selectDate: UILabel!
     @IBOutlet weak var tfTitle: UITextField!
     @IBOutlet weak var tfContext: UITextView!
-    
+    @IBOutlet weak var datePicker: UIDatePicker!
     
     var realTitle: String!
     var realContext: String!
     var receiveDate: String = ""
+    var changeDate : Date!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        receiveDay(receiveDate)
-        selectDate.text = receiveDate
         
+        receiveDay(receiveDate)
+        datePicker.setDate(changeDate, animated: true)
         // Do any additional setup after loading the view.
         self.navigationController?.navigationBar.tintColor = UIColor.white
+        tfContext.placeholder = "내용을 입력해주세요!"
+        
     }
     
     func receiveDay(_ date: String){
         receiveDate = date
+        // 날짜로 변경
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy-MM-dd"
+        dateFormatter.timeZone = TimeZone.autoupdatingCurrent
+        changeDate = dateFormatter.date(from: receiveDate)!
+    }
+    @IBAction func changeDatePicker(_ sender: UIDatePicker) {
+        let datePickerView = sender
+        receiveDate = stringFormatter(datePickerView.date)
     }
     
-    @IBAction func btnSubmit(_ sender: UIButton) {
-        
-        let current_date_string = formatter(Date())
+    @IBAction func barBtnSubmit(_ sender: UIBarButtonItem) {
+        let current_date_string = stringFormatter(Date())
         let sqlite = SQLite()
         
         guard tfTitle.text?.isEmpty != true else {alter(message: "제목을 입력해주세요!", value: false); return}
@@ -50,14 +60,6 @@ class AddViewController: UIViewController {
         }else{
             alter(message: "등록 실패 했습니다.", value: true)
         }
-    }
-    
-    func formatter(_ date: Date) -> String {
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "yyyy-MM-dd"
-        let dataString = dateFormatter.string(from: date)
-        
-        return dataString
     }
     
     /*
@@ -83,5 +85,13 @@ extension UIViewController{
         
         resultAlert.addAction(okAction)
         present(resultAlert, animated: true, completion: nil)
+    }
+    func stringFormatter(_ date: Date) -> String {
+        let dateFormatter = DateFormatter()
+        formatter.locale = Locale(identifier: "ko")
+        dateFormatter.dateFormat = "yyyy-MM-dd"
+        let dataString = dateFormatter.string(from: date)
+        
+        return dataString
     }
 }
