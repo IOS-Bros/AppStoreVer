@@ -150,4 +150,35 @@ class SQLite{
             print("read value no : \(no) title : \(title) contents : \(contents) targetDate : \(targetDate) submitDate : \(submitDate) ")
         }
     }
+    
+    func selectByMonth(year: String, month: String, lastDateOfMonth: String) -> [ToDoModel]{
+        databaseOpen()
+        
+        print("selectByMonth 시작")
+        var resultArr: [ToDoModel] = []
+        
+        let SELECT_ALL_QUERY = "SELECT * FROM \(TABLE_NAME) WHERE targetDate BETWEEN '\(year)-\(month)-01' AND '\(year)-\(month)-\(lastDateOfMonth)' AND deleteDate IS NULL"
+        print("query : \(SELECT_ALL_QUERY) " )
+        var stmt:OpaquePointer?
+        
+        if sqlite3_prepare(db, SELECT_ALL_QUERY, -1, &stmt, nil) != SQLITE_OK{
+            let errmsg = String(cString: sqlite3_errmsg(db))
+            print("error preparing  select \(errmsg)")
+            return resultArr
+        }
+        
+        while(sqlite3_step(stmt) == SQLITE_ROW){
+            let no = sqlite3_column_int(stmt, 0)
+            let title = String(cString: sqlite3_column_text(stmt, 1))
+            let contents = String(cString: sqlite3_column_text(stmt, 2))
+            let targetDate = String(cString: sqlite3_column_text(stmt, 3))
+            let submitDate = String(cString: sqlite3_column_text(stmt, 4))
+            
+            let toDoListModel = ToDoModel(no: Int(no), title: title, contents: contents, targetDate: targetDate, submitDate: submitDate)
+            toDoListModel.printData()
+            resultArr.append(toDoListModel)
+        }
+        
+        return resultArr
+    }
 }
