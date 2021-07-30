@@ -54,12 +54,21 @@
                                     <constraint firstAttribute="height" constant="225" id="ukr-PS-UtJ"/>
                                 </constraints>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="Tdm-3F-BxC">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="main_table_cell" textLabel="WUt-Qp-4oR" style="IBUITableViewCellStyleDefault" id="Tdm-3F-BxC">
                                         <rect key="frame" x="0.0" y="24.5" width="394" height="43.5"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Tdm-3F-BxC" id="vbj-hq-pM3">
                                             <rect key="frame" x="0.0" y="0.0" width="394" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="WUt-Qp-4oR">
+                                                    <rect key="frame" x="20" y="0.0" width="354" height="43.5"/>
+                                                    <autoresizingMask key="autoresizingMask"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="0.0"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
                                         </tableViewCellContentView>
                                         <connections>
                                             <segue destination="hMP-B7-yiY" kind="show" identifier="sgDetail" id="Cz9-2N-d26"/>
@@ -97,6 +106,7 @@
                     </navigationItem>
                     <connections>
                         <outlet property="calendar" destination="qRs-Ei-KME" id="D6s-hH-otY"/>
+                        <outlet property="toDoTableView" destination="pd9-Zc-Mjh" id="AxD-mn-EmX"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="u1V-9g-4Tf" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
