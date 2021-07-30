@@ -74,7 +74,7 @@ class SQLite{
         let strTitle = title.trimmingCharacters(in: .whitespacesAndNewlines)
         let strContents = contents.trimmingCharacters(in: .whitespacesAndNewlines)
         let strTargetDate = targetDate.trimmingCharacters(in: .whitespacesAndNewlines)
-        let UPDATE_QUERY = "UPDATE \(TABLE_NAME) Set title = '\(strTitle)', contents = '\(strContents)', targetDate= '\(strTargetDate)' WHERE no = \(strNo)"
+        let UPDATE_QUERY = "UPDATE \(TABLE_NAME) Set title = ?, contents = ?, targetDate= ? WHERE no = \(strNo)"
         var stmt:OpaquePointer?
         print(UPDATE_QUERY)
         if sqlite3_prepare(db, UPDATE_QUERY, -1, &stmt, nil) != SQLITE_OK{
@@ -82,12 +82,28 @@ class SQLite{
             print("error preparing update: v1\(errMsg)")
             return false
         }
+        let SQLITE_TRANSIENT = unsafeBitCast(-1, to: sqlite3_destructor_type.self)
+        if sqlite3_bind_text(stmt, 1, strTitle, -1, SQLITE_TRANSIENT) != SQLITE_OK{
+            let errMsg = String(cString : sqlite3_errmsg(db)!)
+            print("failture binding title: \(errMsg)")
+            return false
+        }
+        if sqlite3_bind_text(stmt, 2, strContents, -1, SQLITE_TRANSIENT) != SQLITE_OK{
+            let errMsg = String(cString : sqlite3_errmsg(db)!)
+            print("failture binding content: \(errMsg)")
+            return false
+        }
+        if sqlite3_bind_text(stmt, 3, strTargetDate, -1, SQLITE_TRANSIENT) != SQLITE_OK{
+            let errMsg = String(cString : sqlite3_errmsg(db)!)
+            print("failture binding target: \(errMsg)")
+            return false
+        }
         if sqlite3_step(stmt) != SQLITE_DONE {
             let errMsg = String(cString : sqlite3_errmsg(db)!)
             print("update fail :: \(errMsg)")
             return false
         }
-        sqlite3_finalize(stmt)
+//        sqlite3_finalize(stmt)
         print("update success")
         return true
     }
@@ -97,6 +113,7 @@ class SQLite{
         let strdeleteDate = deleteDate.trimmingCharacters(in: .whitespacesAndNewlines)
         let DELETE_QUERY = "UPDATE \(TABLE_NAME) Set deleteDate = '\(strdeleteDate)' WHERE no = \(strNo)"
         var stmt:OpaquePointer?
+        
         print(DELETE_QUERY)
         if sqlite3_prepare_v2(db, DELETE_QUERY, -1, &stmt, nil) != SQLITE_OK{
             let errMsg = String(cString: sqlite3_errmsg(db)!)
@@ -132,6 +149,5 @@ class SQLite{
             let submitDate = String(cString: sqlite3_column_text(stmt, 4))
             print("read value no : \(no) title : \(title) contents : \(contents) targetDate : \(targetDate) submitDate : \(submitDate) ")
         }
-
     }
 }
