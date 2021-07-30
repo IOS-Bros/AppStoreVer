@@ -11,14 +11,11 @@ class AddViewController: UIViewController {
     
     @IBOutlet weak var selectDate: UILabel!
     @IBOutlet weak var tfTitle: UITextField!
-
-//    @IBOutlet weak var tfContext: UITextField!
     @IBOutlet weak var tfContext: UITextView!
     
     
     var realTitle: String!
     var realContext: String!
-    
     var receiveDate: String = ""
     
     override func viewDidLoad() {
@@ -30,7 +27,6 @@ class AddViewController: UIViewController {
         self.navigationController?.navigationBar.tintColor = UIColor.white
     }
     
-    
     func receiveDay(_ date: String){
         receiveDate = date
     }
@@ -40,32 +36,20 @@ class AddViewController: UIViewController {
         let current_date_string = formatter(Date())
         let sqlite = SQLite()
         
+        guard tfTitle.text?.isEmpty != true else {alter(message: "제목을 입력해주세요!", value: false); return}
+        
         realTitle = tfTitle.text!
         realContext = tfContext.text!
         
         let viewController = ViewController()
         events.append(viewController.selectDateType!)
         
-        let insertResult = sqlite.insert("",realContext, receiveDate, current_date_string)
+        let insertResult = sqlite.insert(realTitle, realContext, receiveDate, current_date_string)
         if insertResult{
-            let resultAlert = UIAlertController(title: "Dogter", message: "+1 능력 상승 되었습니다.", preferredStyle: .alert)
-            let okAction = UIAlertAction(title: "네, 알겠습니다.", style: .default, handler: {ACTION in
-                self.navigationController?.popViewController(animated: true)
-            })
-            
-            resultAlert.addAction(okAction)
-            present(resultAlert, animated: true, completion: nil)
+            alter(message: "+1 능력 상승 되었습니다.", value: true)
         }else{
-            let resultAlert = UIAlertController(title: "Dogter", message: "등록 실패했습니다.", preferredStyle: .alert)
-            let okAction = UIAlertAction(title: "네, 알겠습니다.", style: .default, handler: {ACTION in
-                self.navigationController?.popViewController(animated: true)
-            })
-            
-            resultAlert.addAction(okAction)
-            present(resultAlert, animated: true, completion: nil)
+            alter(message: "등록 실패 했습니다.", value: true)
         }
-        
-        self.navigationController?.popViewController(animated: true)
     }
     
     func formatter(_ date: Date) -> String {
@@ -75,7 +59,6 @@ class AddViewController: UIViewController {
         
         return dataString
     }
-    
     
     /*
      // MARK: - Navigation
@@ -87,4 +70,18 @@ class AddViewController: UIViewController {
      }
      */
     
+}
+
+extension UIViewController{
+    func alter(message: String, value: Bool) {
+        let resultAlert = UIAlertController(title: "Dogter", message: message, preferredStyle: .alert)
+        let okAction = UIAlertAction(title: "OK", style: .default, handler: {ACTION in
+            if value{
+                self.navigationController?.popViewController(animated: true)
+            }
+        })
+        
+        resultAlert.addAction(okAction)
+        present(resultAlert, animated: true, completion: nil)
+    }
 }

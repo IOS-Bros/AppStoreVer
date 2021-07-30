@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="18122" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="18093"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -55,14 +55,14 @@
                                 </constraints>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="Tdm-3F-BxC">
-                                        <rect key="frame" x="0.0" y="28" width="394" height="43.5"/>
+                                        <rect key="frame" x="0.0" y="24.5" width="394" height="43.5"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Tdm-3F-BxC" id="vbj-hq-pM3">
                                             <rect key="frame" x="0.0" y="0.0" width="394" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                         </tableViewCellContentView>
                                         <connections>
-                                            <segue destination="hMP-B7-yiY" kind="show" id="Cz9-2N-d26"/>
+                                            <segue destination="hMP-B7-yiY" kind="show" identifier="sgDetail" id="Cz9-2N-d26"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -119,7 +119,6 @@
                             </label>
                             <textField opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="251" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="제목을 입력해주세요" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="S98-ca-TTK">
                                 <rect key="frame" x="30" y="172" width="354" height="40"/>
-
                                 <constraints>
                                     <constraint firstAttribute="height" constant="40" id="h9Y-dI-NPI"/>
                                 </constraints>
@@ -166,7 +165,7 @@
                             <constraint firstItem="ygV-A3-Uhq" firstAttribute="top" secondItem="l5U-NS-9uo" secondAttribute="top" constant="30" id="yOg-yu-gAQ"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="NiJ-KL-icH"/>
+                    <navigationItem key="navigationItem" id="NiJ-KL-icH" colorLabel="IBBuiltInLabel-Red"/>
                     <connections>
                         <outlet property="selectDate" destination="ygV-A3-Uhq" id="cPa-ua-BDx"/>
                         <outlet property="tfContext" destination="zav-Bq-ra4" id="T9U-8A-zEf"/>
@@ -195,10 +194,10 @@
             </objects>
             <point key="canvasLocation" x="957" y="98"/>
         </scene>
-        <!--View Controller-->
+        <!--Detail View Controller-->
         <scene sceneID="iHb-UT-b5j">
             <objects>
-                <viewController id="hMP-B7-yiY" sceneMemberID="viewController">
+                <viewController id="hMP-B7-yiY" customClass="DetailViewController" customModule="pet_prototype" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="a2x-3Z-vFR">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -236,6 +235,7 @@
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
                                 <connections>
+                                    <action selector="btnModify:" destination="hMP-B7-yiY" eventType="touchUpInside" id="ZBz-SU-sFf"/>
                                     <action selector="btnSubmit:" destination="R73-Hs-GvB" eventType="touchUpInside" id="Eyu-n7-u2R"/>
                                 </connections>
                             </button>
@@ -259,6 +259,11 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="uHD-yY-9pt"/>
+                    <connections>
+                        <outlet property="lblTargetDate" destination="PhP-1S-QGe" id="TCA-dy-VWS"/>
+                        <outlet property="tfTitle" destination="MzB-ZD-bx7" id="nMq-80-8fe"/>
+                        <outlet property="tvContent" destination="UHh-2V-7pR" id="b7k-Zt-kFt"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="XPs-Fe-RL1" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
