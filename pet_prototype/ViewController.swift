@@ -25,6 +25,11 @@ class ViewController: UIViewController{
     
     var selectDateType = formatter.date(from: selectDate01)
     
+    var clickNo: Int!
+    var clickTitle: String!
+    var clickContent: String!
+    var clickTargetDate: String!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
        
@@ -80,14 +85,13 @@ class ViewController: UIViewController{
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "addSegue" {
-            let detail = segue.destination as! AddViewController
-            detail.receiveDay(selectDate01)
-            
-            
-            
+            let add = segue.destination as! AddViewController
+            add.receiveDay(selectDate01)
 //            events.append(selectDateType!)
-            
 //            print(events[0])
+        }else if segue.identifier == "sgDetail"{
+            let detail = segue.destination as! DetailViewController
+            detail.receiveData(clickNo, clickTitle, clickContent, clickTargetDate)
         }
     }
         
@@ -270,6 +274,11 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource{
         }
         print("테이블에 출력될 내용은 \(toDoModelArr[indexPath.row].title)입니다.")
         cell.textLabel?.text = toDoModelArr[indexPath.row].title
+        
+        clickNo = toDoModelArr[indexPath.row].no
+        clickTitle = toDoModelArr[indexPath.row].title
+        clickContent = toDoModelArr[indexPath.row].contents
+        clickTargetDate = toDoModelArr[indexPath.row].targetDate
         
         return cell
     }

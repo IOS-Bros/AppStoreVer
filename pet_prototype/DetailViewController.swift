@@ -13,7 +13,7 @@ class DetailViewController: UIViewController {
     @IBOutlet weak var tvContent: UITextView!
     @IBOutlet weak var detailDatePicker: UIDatePicker!
     
-    var receiveNo:String!
+    var receiveNo:Int!
     var receiveTitle:String!
     var receiveContent:String!
     var receiveTargetDate:String!
@@ -29,11 +29,11 @@ class DetailViewController: UIViewController {
         tvContent.text = receiveContent
         tvContent.placeholder = "내용을 입력해주세요!"
         // Do any additional setup after loading the view.
-        
+        self.navigationController?.navigationBar.tintColor = UIColor.white
         detailDatePicker.setDate(changeDate, animated: true)
     }
     
-    func receiveData(_ no: String, _ title:String, _ content:String, _ targetDate:String){
+    func receiveData(_ no: Int, _ title:String, _ content:String, _ targetDate:String){
         receiveNo = no
         receiveTitle = title
         receiveContent = content
