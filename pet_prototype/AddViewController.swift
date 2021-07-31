@@ -13,6 +13,7 @@ class AddViewController: UIViewController {
     @IBOutlet weak var tfContext: UITextView!
     @IBOutlet weak var datePicker: UIDatePicker!
     
+    let pointColor : UIColor = UIColor.init(displayP3Red: 99/255, green: 197/255, blue: 148/255, alpha: 1)
     var realTitle: String!
     var realContext: String!
     var receiveDate: String = ""
@@ -26,6 +27,12 @@ class AddViewController: UIViewController {
         // Do any additional setup after loading the view.
         self.navigationController?.navigationBar.tintColor = UIColor.white
         tfContext.placeholder = "내용을 입력해주세요!"
+        
+        tfTitle.layer.borderWidth = 1
+        tfTitle.layer.cornerRadius = 8.0
+        tfTitle.layer.borderColor = pointColor.cgColor
+        tfContext.layer.borderWidth = 1
+        tfContext.layer.borderColor = pointColor.cgColor
         
     }
     

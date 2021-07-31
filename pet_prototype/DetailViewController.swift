@@ -13,6 +13,8 @@ class DetailViewController: UIViewController {
     @IBOutlet weak var tvContent: UITextView!
     @IBOutlet weak var detailDatePicker: UIDatePicker!
     
+    let pointColor : UIColor = UIColor.init(displayP3Red: 99/255, green: 197/255, blue: 148/255, alpha: 1)
+    
     var receiveNo:Int!
     var receiveTitle:String!
     var receiveContent:String!
@@ -31,6 +33,13 @@ class DetailViewController: UIViewController {
         // Do any additional setup after loading the view.
         self.navigationController?.navigationBar.tintColor = UIColor.white
         detailDatePicker.setDate(changeDate, animated: true)
+        
+        tfTitle.layer.borderWidth = 1
+        tfTitle.layer.cornerRadius = 8.0
+        tfTitle.layer.borderColor = pointColor.cgColor
+        tvContent.layer.borderWidth = 1
+        tvContent.layer.borderColor = pointColor.cgColor
+        
     }
     
     func receiveData(_ no: Int, _ title:String, _ content:String, _ targetDate:String){
