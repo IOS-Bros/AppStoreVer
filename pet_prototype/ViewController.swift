@@ -79,6 +79,8 @@ class ViewController: UIViewController{
 //            calendar.dataSource = self
     //        calendar.setCurrentPage(selectDateType! + 2592000, animated: true)
             calendar.reloadData()
+            getTodoByMonth(dateFomatString: selectDate01)
+            toDoTableView.reloadData()
             
         }
     
