@@ -39,10 +39,7 @@ class DateHandling{
             return nil
         }
     }
-    
-    func dateToString(date: Date){
-        
-    }
+
     
     func splitedDateStr(dateStr: String) -> [String]{
         var result = [String]()
@@ -50,6 +47,11 @@ class DateHandling{
             result.append(String(i))
         }
         return result
+    }
+    
+    func getDayToString(_ date: String) -> String{
+        let spiltedDate = date.split(separator: "-")
+        return String(spiltedDate[2])
     }
     
     

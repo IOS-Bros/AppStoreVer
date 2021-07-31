@@ -13,22 +13,17 @@ var events: Array<Date> = []
 
 class ViewController: UIViewController{
     
-    //table start
+    //>>>>>>>>>>>>>>>>table start
     @IBOutlet weak var toDoTableView: UITableView!
     let sqlite: SQLite = SQLite()
     //보고있는 달력의 월의 총 toDoModel을 date-[toDoModel]값으로 보유한 dic
     var toDoDicBySelectedDate = [Int: [ToDoModel]]()
-    //table end
+    //table end<<<<<<<<<<<<<<<<<<
     let dateHandler = DateHandling()
     
     @IBOutlet weak var calendar: FSCalendar!
     
     var selectDateType = formatter.date(from: selectDate01)
-    
-    var clickNo: Int!
-    var clickTitle: String!
-    var clickContent: String!
-    var clickTargetDate: String!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -91,7 +86,15 @@ class ViewController: UIViewController{
 //            print(events[0])
         }else if segue.identifier == "sgDetail"{
             let detail = segue.destination as! DetailViewController
-            detail.receiveData(clickNo, clickTitle, clickContent, clickTargetDate)
+            let cell = sender as! UITableViewCell
+            let indexPath = self.toDoTableView.indexPath(for: cell)
+            let selectedDayToString = dateHandler.getDayToString(selectDate01)
+            guard let selectedDayToDoArr = toDoDicBySelectedDate[Int(selectedDayToString)!] else {
+                return
+            }
+            let dto = selectedDayToDoArr[indexPath!.row]
+            
+            detail.receiveData(dto.no, dto.title, dto.contents, selectDate01)
         }
     }
         
@@ -274,11 +277,6 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource{
         }
         print("테이블에 출력될 내용은 \(toDoModelArr[indexPath.row].title)입니다.")
         cell.textLabel?.text = toDoModelArr[indexPath.row].title
-        
-        clickNo = toDoModelArr[indexPath.row].no
-        clickTitle = toDoModelArr[indexPath.row].title
-        clickContent = toDoModelArr[indexPath.row].contents
-        clickTargetDate = toDoModelArr[indexPath.row].targetDate
         
         return cell
     }
