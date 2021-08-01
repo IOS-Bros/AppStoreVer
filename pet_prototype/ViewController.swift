@@ -10,16 +10,14 @@ import FSCalendar
 let formatter = DateFormatter()
 var selectDate01 = ""
 var events: Array<Date> = []
+var toDoDicBySelectedDate = [Int: [ToDoModel]]()
+let sqlite: SQLite = SQLite()
+let dateHandler = DateHandling()
 
 class ViewController: UIViewController{
     
-    //>>>>>>>>>>>>>>>>table start
     @IBOutlet weak var toDoTableView: UITableView!
-    let sqlite: SQLite = SQLite()
-    //보고있는 달력의 월의 총 toDoModel을 date-[toDoModel]값으로 보유한 dic
-    var toDoDicBySelectedDate = [Int: [ToDoModel]]()
-    //table end<<<<<<<<<<<<<<<<<<
-    let dateHandler = DateHandling()
+
     
     @IBOutlet weak var calendar: FSCalendar!
     
@@ -269,7 +267,7 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource{
         //dic의 value는 이미 내림차순으로 출력되어 있으므로 그냥 출력
         let splitedDate = selectDate01.split(separator: "-")
         let date = Int(splitedDate[2])!
-        guard let toDoModelArr = self.toDoDicBySelectedDate[date] else {
+        guard let toDoModelArr = toDoDicBySelectedDate[date] else {
             print("테이블에 출력될 내용이 업습니다.")
             return cell
         }
@@ -281,6 +279,29 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource{
         cell.textLabel?.text = toDoModelArr[indexPath.row].title
         
         return cell
+    }
+    
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+            if editingStyle == .delete {
+                let selectedDayToString = dateHandler.getDayToString(selectDate01)
+                guard var selectedDayToDoArr = toDoDicBySelectedDate[Int(selectedDayToString)!] else {
+                    return
+                }
+                let taget = selectedDayToDoArr[indexPath.row]
+                if !sqlite.delete(taget.no, dateHandler.getToday()){
+                    return
+                }
+                selectedDayToDoArr.remove(at: indexPath.row)
+                toDoDicBySelectedDate[Int(selectedDayToString)!] = selectedDayToDoArr
+                tableView.deleteRows(at: [indexPath], with: .fade)
+                
+                if selectedDayToDoArr.count == 0 {
+                    let noneDateDate = dateHandler.StringtoDate(dateStr: selectDate01)
+                    let noneDateDateIndex = events.firstIndex(of: noneDateDate!)
+                    events.remove(at: noneDateDateIndex!)
+                    calendar.reloadData()
+                }
+            }
     }
     
     //MARK: - Table view cell data source
