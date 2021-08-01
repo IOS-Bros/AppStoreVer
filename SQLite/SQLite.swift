@@ -180,4 +180,30 @@ class SQLite{
         
         return resultArr
     }
+    
+    func getLastOne() -> ToDoModel?{
+        var toDoListModel:ToDoModel? = nil
+        print("getLastNo 시작")
+        
+        let SELECT_LAST_NO = "SELECT * FROM \(TABLE_NAME) ORDER BY ROWID DESC LIMIT 1"
+        print("query : \(SELECT_LAST_NO) " )
+        var stmt:OpaquePointer?
+        
+        if sqlite3_prepare(db, SELECT_LAST_NO, -1, &stmt, nil) != SQLITE_OK{
+            let errMsg = String(cString: sqlite3_errmsg(db)!)
+            print("error preparing insert: v1\(errMsg)")
+            return toDoListModel
+        }
+        if sqlite3_step(stmt) == SQLITE_ROW {
+            let no = sqlite3_column_int(stmt, 0)
+            let title = String(cString: sqlite3_column_text(stmt, 1))
+            let contents = String(cString: sqlite3_column_text(stmt, 2))
+            let targetDate = String(cString: sqlite3_column_text(stmt, 3))
+            let submitDate = String(cString: sqlite3_column_text(stmt, 4))
+            
+            toDoListModel = ToDoModel(no: Int(no), title: title, contents: contents, targetDate: targetDate, submitDate: submitDate)
+            toDoListModel!.printData()
+        }
+        return toDoListModel
+    }
 }

@@ -61,12 +61,33 @@ class AddViewController: UIViewController {
         let viewController = ViewController()
         events.append(viewController.selectDateType!)
         
-        let insertResult = sqlite.insert(realTitle, realContext, receiveDate, current_date_string)
-        if insertResult{
-            alter(message: "+1 능력 상승 되었습니다.", value: true)
-        }else{
+        if !sqlite.insert(realTitle, realContext, receiveDate, current_date_string){
             alter(message: "등록 실패 했습니다.", value: true)
         }
+        alter(message: "+1 능력 상승 되었습니다.", value: true)
+
+        
+        //----------------------------
+        let splitedtagetDate = receiveDate.split(separator: "-")
+        let date = Int(splitedtagetDate[2])!
+        
+        guard let toDoModel = sqlite.getLastOne() else {
+            print("data load fail")
+            return
+        }
+        
+        if var toDoModelArr = toDoDicBySelectedDate[date] {
+            toDoModelArr.append(toDoModel)
+            toDoModelArr.sort(by: {$0.no > $1.no})
+            toDoDicBySelectedDate[date] = toDoModelArr
+            print("\(date)일에 데이터가 추가되었습니다.")
+        } else {
+            var newToDoModelArr = [ToDoModel]()
+            newToDoModelArr.append(toDoModel)
+            toDoDicBySelectedDate[date] = newToDoModelArr
+            print("\(date)일에 첫번째 데이터가 추가되었습니다.")
+        }
+        //--------------------
     }
     
     /*

@@ -10,16 +10,12 @@ import FSCalendar
 let formatter = DateFormatter()
 var selectDate01 = ""
 var events: Array<Date> = []
+var toDoDicBySelectedDate = [Int: [ToDoModel]]()
 
 class ViewController: UIViewController{
     
-    //>>>>>>>>>>>>>>>>table start
     @IBOutlet weak var toDoTableView: UITableView!
     let sqlite: SQLite = SQLite()
-    //보고있는 달력의 월의 총 toDoModel을 date-[toDoModel]값으로 보유한 dic
-    var toDoDicBySelectedDate = [Int: [ToDoModel]]()
-    var todayToDoArr = [ToDoModel]()
-    //table end<<<<<<<<<<<<<<<<<<
     let dateHandler = DateHandling()
     
     @IBOutlet weak var calendar: FSCalendar!
@@ -270,7 +266,7 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource{
         //dic의 value는 이미 내림차순으로 출력되어 있으므로 그냥 출력
         let splitedDate = selectDate01.split(separator: "-")
         let date = Int(splitedDate[2])!
-        guard let toDoModelArr = self.toDoDicBySelectedDate[date] else {
+        guard let toDoModelArr = toDoDicBySelectedDate[date] else {
             print("테이블에 출력될 내용이 업습니다.")
             return cell
         }
