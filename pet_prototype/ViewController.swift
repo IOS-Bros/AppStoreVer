@@ -18,6 +18,7 @@ class ViewController: UIViewController{
     let sqlite: SQLite = SQLite()
     //보고있는 달력의 월의 총 toDoModel을 date-[toDoModel]값으로 보유한 dic
     var toDoDicBySelectedDate = [Int: [ToDoModel]]()
+    var todayToDoArr = [ToDoModel]()
     //table end<<<<<<<<<<<<<<<<<<
     let dateHandler = DateHandling()
     
@@ -281,6 +282,22 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource{
         cell.textLabel?.text = toDoModelArr[indexPath.row].title
         
         return cell
+    }
+    
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+            if editingStyle == .delete {
+                let selectedDayToString = dateHandler.getDayToString(selectDate01)
+                guard var selectedDayToDoArr = toDoDicBySelectedDate[Int(selectedDayToString)!] else {
+                    return
+                }
+                let taget = selectedDayToDoArr[indexPath.row]
+                if !sqlite.delete(taget.no, dateHandler.getToday()){
+                    return
+                }
+                selectedDayToDoArr.remove(at: indexPath.row)
+                toDoDicBySelectedDate[Int(selectedDayToString)!] = selectedDayToDoArr
+                tableView.deleteRows(at: [indexPath], with: .fade)
+            }
     }
     
     //MARK: - Table view cell data source

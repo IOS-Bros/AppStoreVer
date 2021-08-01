@@ -107,11 +107,10 @@ class SQLite{
         print("update success")
         return true
     }
-    func delete(_ no:String, _ deleteDate:String) -> Bool{
+    func delete(_ no: Int, _ deleteDate:String) -> Bool{
         databaseOpen()
-        let strNo = no.trimmingCharacters(in: .whitespacesAndNewlines)
         let strdeleteDate = deleteDate.trimmingCharacters(in: .whitespacesAndNewlines)
-        let DELETE_QUERY = "UPDATE \(TABLE_NAME) Set deleteDate = '\(strdeleteDate)' WHERE no = \(strNo)"
+        let DELETE_QUERY = "UPDATE \(TABLE_NAME) Set deleteDate = '\(strdeleteDate)' WHERE no = \(no)"
         var stmt:OpaquePointer?
         
         print(DELETE_QUERY)
