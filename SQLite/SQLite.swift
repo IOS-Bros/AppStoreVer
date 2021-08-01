@@ -10,6 +10,7 @@ import SQLite3
 class SQLite{
     var db:OpaquePointer?
     let TABLE_NAME : String = "DaengDaengTable"
+    
     func databaseOpen() {
         let fileURL = try! FileManager.default.url(for: .documentDirectory, in: .userDomainMask, appropriateFor: nil, create: false).appendingPathComponent("DaengDaengDB.sqlite")
         // 파일 경로
@@ -204,6 +205,51 @@ class SQLite{
             toDoListModel = ToDoModel(no: Int(no), title: title, contents: contents, targetDate: targetDate, submitDate: submitDate)
             toDoListModel!.printData()
         }
+        sqlite3_finalize(stmt);
         return toDoListModel
+    }
+    
+    func insertAndReturn(_ title : String,_ contents : String, _ targetDate : String, _ submitDate : String) -> ToDoModel?{
+        var stmt : OpaquePointer?
+        databaseOpen()
+        let strTitle = title.trimmingCharacters(in: .whitespacesAndNewlines)
+        let strContents = contents.trimmingCharacters(in: .whitespacesAndNewlines)
+        let strTargetDate = targetDate.trimmingCharacters(in: .whitespacesAndNewlines)
+        let strSubmitDate = submitDate.trimmingCharacters(in: .whitespacesAndNewlines)
+        let INSERT_QUERY_TEXT : String = "INSERT INTO \(TABLE_NAME) (title, contents, targetDate, submitDate) Values (?,?,?,?)"
+        if sqlite3_prepare(db, INSERT_QUERY_TEXT, -1, &stmt, nil) != SQLITE_OK {
+            let errMsg = String(cString: sqlite3_errmsg(db)!)
+            print("error preparing insert:v1 \(errMsg)")
+            return nil
+        }
+        let SQLITE_TRANSIENT = unsafeBitCast(-1, to: sqlite3_destructor_type.self)
+        if sqlite3_bind_text(stmt, 1, strTitle, -1, SQLITE_TRANSIENT) != SQLITE_OK{
+            let errMsg = String(cString : sqlite3_errmsg(db)!)
+            print("failture binding title: \(errMsg)")
+            return nil
+        }
+        if sqlite3_bind_text(stmt, 2, strContents, -1, SQLITE_TRANSIENT) != SQLITE_OK{
+            let errMsg = String(cString : sqlite3_errmsg(db)!)
+            print("failture binding content: \(errMsg)")
+            return nil
+        }
+        if sqlite3_bind_text(stmt, 3, strTargetDate, -1, SQLITE_TRANSIENT) != SQLITE_OK{
+            let errMsg = String(cString : sqlite3_errmsg(db)!)
+            print("failture binding target: \(errMsg)")
+            return nil
+        }
+        if sqlite3_bind_text(stmt, 4, strSubmitDate, -1, SQLITE_TRANSIENT) != SQLITE_OK{
+            let errMsg = String(cString : sqlite3_errmsg(db)!)
+            print("failture binding submit: \(errMsg)")
+            return nil
+        }
+        if sqlite3_step(stmt) != SQLITE_DONE {
+            let errMsg = String(cString : sqlite3_errmsg(db)!)
+            print("insert fail :: \(errMsg)")
+            return nil
+        }
+        sqlite3_finalize(stmt);
+        
+        return getLastOne()
     }
 }

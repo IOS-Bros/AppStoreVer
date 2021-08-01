@@ -11,12 +11,13 @@ let formatter = DateFormatter()
 var selectDate01 = ""
 var events: Array<Date> = []
 var toDoDicBySelectedDate = [Int: [ToDoModel]]()
+let sqlite: SQLite = SQLite()
+let dateHandler = DateHandling()
 
 class ViewController: UIViewController{
     
     @IBOutlet weak var toDoTableView: UITableView!
-    let sqlite: SQLite = SQLite()
-    let dateHandler = DateHandling()
+
     
     @IBOutlet weak var calendar: FSCalendar!
     
@@ -293,6 +294,13 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource{
                 selectedDayToDoArr.remove(at: indexPath.row)
                 toDoDicBySelectedDate[Int(selectedDayToString)!] = selectedDayToDoArr
                 tableView.deleteRows(at: [indexPath], with: .fade)
+                
+                if selectedDayToDoArr.count == 0 {
+                    let noneDateDate = dateHandler.StringtoDate(dateStr: selectDate01)
+                    let noneDateDateIndex = events.firstIndex(of: noneDateDate!)
+                    events.remove(at: noneDateDateIndex!)
+                    calendar.reloadData()
+                }
             }
     }
     
