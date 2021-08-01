@@ -17,6 +17,7 @@
 		1FAFF31A26B2752C00FA3C64 /* SQLite.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FAFF31926B2752C00FA3C64 /* SQLite.swift */; };
 		377B68B426B382A400647AF3 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 377B68B326B382A400647AF3 /* DetailViewController.swift */; };
 		37AF0D2926B3C80C002B0E60 /* Extention.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37AF0D2826B3C80C002B0E60 /* Extention.swift */; };
+		4132A30F49C12FF64B71C860 /* Pods_pet_prototype.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 182F5E53234EE3D3DA5FC830 /* Pods_pet_prototype.framework */; };
 		8061E7F626B4086A000BEFE5 /* DateHandling.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8061E7F526B4086A000BEFE5 /* DateHandling.swift */; };
 		80A556F326B18CF3005CB52D /* InitialViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80A556F226B18CF3005CB52D /* InitialViewController.swift */; };
 		80FE287526B3CEBB00D8D1B7 /* ToDoModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80FE287426B3CEBB00D8D1B7 /* ToDoModel.swift */; };
@@ -33,6 +34,8 @@
 		041E077526AC074400636875 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		041E077726AC074400636875 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		0438935C26AC679C00D30B72 /* AddViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddViewController.swift; sourceTree = "<group>"; };
+		0F01107E59D1644CEAC10904 /* Pods-pet_prototype.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-pet_prototype.release.xcconfig"; path = "Target Support Files/Pods-pet_prototype/Pods-pet_prototype.release.xcconfig"; sourceTree = "<group>"; };
+		182F5E53234EE3D3DA5FC830 /* Pods_pet_prototype.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_pet_prototype.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		1FAFF31926B2752C00FA3C64 /* SQLite.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SQLite.swift; sourceTree = "<group>"; };
 		2B3D02D131D7FE7137370121 /* Pods-pet_prototype.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-pet_prototype.release.xcconfig"; path = "Target Support Files/Pods-pet_prototype/Pods-pet_prototype.release.xcconfig"; sourceTree = "<group>"; };
 		377B68B326B382A400647AF3 /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
