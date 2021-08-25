@@ -17,7 +17,6 @@ let dateHandler = DateHandling()
 class ViewController: UIViewController{
     
     @IBOutlet weak var toDoTableView: UITableView!
-
     
     @IBOutlet weak var calendar: FSCalendar!
     
